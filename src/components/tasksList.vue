@@ -10,10 +10,13 @@
                     <button  @click="deleteTask(task)">Удалить</button>
                </div> 
           </div>
+          <button @click="console.log([...this.$store.state.tasks])">Кнопка</button>
      </div>
 </template>
 
 <script>
+
+import { mapState } from 'vuex'
 export default {
      name: "TasksList",
      data(){
@@ -21,18 +24,32 @@ export default {
                localTasksList: []
           }
      },
-     methods: {
-          
+     computed: {
+          ...mapState(['tasks'])
+     },
+     methods: {     
           editTask(task){
                task.isEdit = !task.isEdit
+               if(task.isEdit == false){
+                    this.$store.commit('updateTask', [task.id, task.taskValue])
+               }
           },
           deleteTask(task){
                this.localTasksList = this.localTasksList.filter(e=> e != task)
           },
+          updateTasksList(){
+               this.localTasksList = [...this.$store.state.tasks]
+          }
      },
-     mounted: function(){
-          this.localTasksList = [...this.$store.state.tasks]
-          this.localTasksList.map(e => e.isEdit = false)
+     mounted() {
+          this.updateTasksList()
+     },
+     watch: {
+          tasks:{
+               handler(){
+                    this.updateTasksList()
+               }, deep: true
+          }
      }
 }
 </script>

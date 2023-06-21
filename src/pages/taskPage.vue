@@ -15,10 +15,6 @@ export default {
           createNewTasks,
           tasksList,
      },
-     // data(){
-     //      return {
-
-     //      }
-     // },
+     
 }
 </script>

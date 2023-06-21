@@ -28,7 +28,8 @@ export default createStore({
            }       
       }
       return localValue
-    }
+    },
+
   },
   mutations: {
     addNewTask (state, task){
@@ -37,7 +38,11 @@ export default createStore({
         taskValue: task
       }
       state.tasks.unshift(localTask)
-      console.log(state.tasks)
+    },
+    updateTask(state, task){
+      let [id, value] = task
+      let findIndexTask = state.tasks.findIndex(e => e.id == id)
+      state.tasks[findIndexTask].taskValue = value
     }
   },
   actions: {},
