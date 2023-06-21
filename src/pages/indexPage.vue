@@ -1,6 +1,6 @@
 <template>
      <div>
-          <h1>IndexPage</h1>
+          <router-link to="tasks">IndexPage</router-link>
      </div>
 </template>
 
