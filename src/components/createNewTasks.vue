@@ -1,7 +1,7 @@
 <template>
      <div>
-          <input type="text">
-          <button>Создать задачу</button>
+          <input type="text" v-model="taskValue">
+          <button @click="addNewTaskInState">Создать задачу</button>
      </div>
 </template>
 
@@ -10,7 +10,12 @@ export default {
      name: "CreateNewTasks",
      data(){
           return{
-
+               taskValue: ''
+          }
+     },
+     methods: {
+          addNewTaskInState(){
+               this.$store.commit('addNewTask', this.taskValue)
           }
      }
 }
