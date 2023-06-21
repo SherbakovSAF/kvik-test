@@ -2,25 +2,12 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
-    tasks: [
-      {
-        id: 1,
-        taskValue: "Привет",
-      },
-      {
-        id: 2,
-        taskValue: "",
-      },
-      {
-        id: 3,
-        taskValue: "",
-      },
-    ],
+    tasks: [],
   },
   getters: {
     validID(state){
       let localValue = 0
-      for (let i = 0; i < state.tasks.length; i++) {
+      for (let i = state.tasks.length; i > 0; i--) {
            if(state.tasks[i].id === i){
                 localValue++
            } else {
@@ -43,8 +30,9 @@ export default createStore({
       let [id, value] = task
       let findIndexTask = state.tasks.findIndex(e => e.id == id)
       state.tasks[findIndexTask].taskValue = value
+    },
+    deleteTask(state, taskID){
+      state.tasks = state.tasks.filter(e => e.id != taskID)
     }
   },
-  actions: {},
-  modules: {},
 });

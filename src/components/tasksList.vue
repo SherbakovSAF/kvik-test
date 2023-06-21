@@ -35,7 +35,7 @@ export default {
                }
           },
           deleteTask(task){
-               this.localTasksList = this.localTasksList.filter(e=> e != task)
+               this.$store.commit('deleteTask', task.id)
           },
           updateTasksList(){
                this.localTasksList = [...this.$store.state.tasks]
