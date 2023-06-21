@@ -1,12 +1,12 @@
 <template>
      <div> <!-- Врапер для всех таксок -->
-          <div v-for="tasks in localTasksList" :key="tasks.id"> <!-- name="Врапер для всей таски" v-for тут -->
+          <div v-for="task in localTasksList" :key="task.id"> <!-- name="Врапер для всей таски" v-for тут -->
                <div> <!-- name="Врапер для текста таски" -->
-                    <div>{{tasks.taskValue}}</div>
-                    <input type="text"> <!-- name="При редактировании будет инпут" -->
+                    <div v-if="!task.isEdit">{{task.taskValue}}</div>
+                    <input v-else v-model="task.taskValue" type="text"> <!-- name="При редактировании будет инпут" -->
                </div>
                <div>  <!-- name="Врапер кнопок. Декоративный характер" -->
-                    <button>Изменить</button>
+                    <button @click="editTasks(task)">{{task.isEdit ? 'Готово' : 'Изменить'}}</button>
                     <button>Удалить</button>
                </div> 
           </div>
@@ -21,14 +21,21 @@ export default {
                localTasksList: [
                     {
                          id: 1,
-                         taskValue: 'Купить шторы'
+                         taskValue: 'Купить шторы',
+                         isEdit: false
                     },
                     {
                          id: 2,
-                         taskValue: 'Не шторы'
+                         taskValue: 'Не шторы',
+                         isEdit: false
                     }
                ]
           }
+     },
+     methods: {
+          editTasks(task){
+               task.isEdit = !task.isEdit
+          },
      },
      computed(){
           //Получение таксок из Store... !!!Возможно лучше это делать в page и передавать пропсами. Смотри как будет обновляться всё
