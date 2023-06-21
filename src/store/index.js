@@ -7,12 +7,12 @@ export default createStore({
   getters: {
     validID(state){
       let localValue = 0
-      for (let i = state.tasks.length; i > 0; i--) {
-           if(state.tasks[i].id === i){
-                localValue++
+      for (let i = 0; i < state.tasks.length; i++) {
+           if(state.tasks.findIndex(e=> e.id == i) >= 0){
+            localValue++
            } else {
-                return localValue
-           }       
+            return localValue
+           }
       }
       return localValue
     },
