@@ -20,23 +20,24 @@ export default createStore({
   getters: {
     validID(state){
       let localValue = 0
-      for (let i = 0; i < state.length; i++) {
-           if(state[i].id === i){
+      for (let i = 0; i < state.tasks.length; i++) {
+           if(state.tasks[i].id === i){
                 localValue++
            } else {
                 return localValue
            }       
       }
+      return localValue
     }
   },
   mutations: {
-    addTask (state, task){
+    addNewTask (state, task){
       let localTask = {
-        id: getters.validID,
+        id: this.getters.validID,
         taskValue: task
       }
-
-      state.unshift(localTask)
+      state.tasks.unshift(localTask)
+      console.log(state.tasks)
     }
   },
   actions: {},
