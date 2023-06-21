@@ -6,8 +6,8 @@
                     <input v-else v-model="task.taskValue" type="text"> <!-- name="При редактировании будет инпут" -->
                </div>
                <div>  <!-- name="Врапер кнопок. Декоративный характер" -->
-                    <button @click="editTasks(task)">{{task.isEdit ? 'Готово' : 'Изменить'}}</button>
-                    <button>Удалить</button>
+                    <button @click="editTask(task)">{{task.isEdit ? 'Готово' : 'Изменить'}}</button>
+                    <button  @click="deleteTask(task)">Удалить</button>
                </div> 
           </div>
      </div>
@@ -33,9 +33,12 @@ export default {
           }
      },
      methods: {
-          editTasks(task){
+          editTask(task){
                task.isEdit = !task.isEdit
           },
+          deleteTask(task){
+               this.localTasksList = this.localTasksList.filter(e=> e != task)
+          }
      },
      computed(){
           //Получение таксок из Store... !!!Возможно лучше это делать в page и передавать пропсами. Смотри как будет обновляться всё
