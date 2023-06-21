@@ -4,15 +4,15 @@ export default createStore({
   state: {
     tasks: [
       {
-        id: 0,
-        taskValue: "",
-      },
-      {
         id: 1,
-        taskValue: "",
+        taskValue: "Привет",
       },
       {
         id: 2,
+        taskValue: "",
+      },
+      {
+        id: 3,
         taskValue: "",
       },
     ],

@@ -18,30 +18,21 @@ export default {
      name: "TasksList",
      data(){
           return{
-               localTasksList: [
-                    {
-                         id: 1,
-                         taskValue: 'Купить шторы',
-                         isEdit: false
-                    },
-                    {
-                         id: 2,
-                         taskValue: 'Не шторы',
-                         isEdit: false
-                    }
-               ]
+               localTasksList: []
           }
      },
      methods: {
+          
           editTask(task){
                task.isEdit = !task.isEdit
           },
           deleteTask(task){
                this.localTasksList = this.localTasksList.filter(e=> e != task)
-          }
+          },
      },
-     computed(){
-          //Получение таксок из Store... !!!Возможно лучше это делать в page и передавать пропсами. Смотри как будет обновляться всё
+     mounted: function(){
+          this.localTasksList = [...this.$store.state.tasks]
+          this.localTasksList.map(e => e.isEdit = false)
      }
 }
 </script>
