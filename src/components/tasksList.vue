@@ -29,6 +29,7 @@ export default {
      },
      methods: {     
           editTask(task){
+               
                task.isEdit = !task.isEdit
                if(task.isEdit == false){
                     this.$store.commit('updateTask', [task.id, task.taskValue])
@@ -38,7 +39,7 @@ export default {
                this.$store.commit('deleteTask', task.id)
           },
           updateTasksList(){
-               this.localTasksList = [...this.$store.state.tasks]
+               this.localTasksList = this.$store.state.tasks.slice()
           }
      },
      mounted() {
@@ -48,7 +49,7 @@ export default {
           tasks:{
                handler(){
                     this.updateTasksList()
-               }, deep: true
+               },deep: true
           }
      }
 }

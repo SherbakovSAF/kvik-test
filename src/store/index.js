@@ -30,6 +30,7 @@ export default createStore({
       let [id, value] = task
       let findIndexTask = state.tasks.findIndex(e => e.id == id)
       state.tasks[findIndexTask].taskValue = value
+      delete state.tasks[findIndexTask].isEdit
     },
     deleteTask(state, taskID){
       state.tasks = state.tasks.filter(e => e.id != taskID)
