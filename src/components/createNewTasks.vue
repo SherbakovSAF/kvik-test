@@ -6,6 +6,7 @@
 </template>
 
 <script>
+
 export default {
      name: "CreateNewTasks",
      data(){
@@ -15,8 +16,12 @@ export default {
      },
      methods: {
           addNewTaskInState(){
-               this.$store.commit('addNewTask', this.taskValue)
-               this.taskValue = ''
+               if(!this.taskValue.length) {
+                    alert('Введите значение, ведь пусто')
+               } else {
+                    this.$store.commit('addNewTask', this.taskValue)
+                    this.taskValue = ''
+               }
           }
      }
 }

@@ -1,12 +1,12 @@
 <template>
      <div v-if="localTasksList.length" class="tasks__wrap">
           <div  class="tasks__content__wrap">
-               <article v-for="task in localTasksList" :key="task.id" class="task__card"> <!-- name="Врапер для всей таски" v-for тут -->
-                    <div> <!-- name="Врапер для текста таски" -->
+               <article v-for="task in localTasksList" :key="task.id" class="task__card">
+                    <div>
                          <div v-if="!task.isEdit">{{task.taskValue}}</div>
-                         <input v-else v-model="task.taskValue" type="text" placeholder="Напишите свою задачу, пожалуйста"> <!-- name="При редактировании будет инпут" -->
+                         <input v-else v-model="task.taskValue" type="text" placeholder="Напишите свою задачу, пожалуйста">
                     </div>
-                    <div class="btn__wrap">  <!-- name="Врапер кнопок. Декоративный характер" -->
+                    <div class="btn__wrap">
                          <button @click="editTask(task)">
                               {{ task.isEdit ? '✔' : '✏' }}
                          </button>
@@ -15,6 +15,7 @@
                </article>
           </div>
           <!-- <button @click="console.log([...this.$store.state.tasks])">Кнопка</button> -->
+          <!-- Решил оставить, вдруг будете проверять что там в VueX. -->
      </div>
 </template>
 
@@ -33,7 +34,6 @@ export default {
      },
      methods: {     
           editTask(task){
-               
                task.isEdit = !task.isEdit
                if(task.isEdit == false){
                     this.$store.commit('updateTask', [task.id, task.taskValue])
@@ -60,7 +60,6 @@ export default {
      }
 }
 </script>
-
 <style scoped>
 .tasks__wrap{
      background-color: #eff0f2;
@@ -117,7 +116,4 @@ button {
      width: 50px;
      border-radius: 10px;
 }
-
-
-
 </style>
