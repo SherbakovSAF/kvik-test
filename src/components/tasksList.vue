@@ -10,7 +10,7 @@
                     <button  @click="deleteTask(task)">Удалить</button>
                </div> 
           </div>
-          <button @click="console.log([...this.$store.state.tasks])">Кнопка</button>
+          <!-- <button @click="console.log([...this.$store.state.tasks])">Кнопка</button> -->
      </div>
 </template>
 
@@ -43,12 +43,14 @@ export default {
           }
      },
      mounted() {
+          this.$store.commit('initialiseStore')
           this.updateTasksList()
      },
      watch: {
           tasks:{
                handler(){
                     this.updateTasksList()
+                    localStorage.setItem('localTasksList', JSON.stringify(this.localTasksList))
                },deep: true
           }
      }
