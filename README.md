@@ -1,24 +1,22 @@
-# kvik-test
+# Список дел
 
-## Project setup
-```
-npm install
-```
+#### Суть проекта
+Тестовое задание. Обычный task manager, которых миллион. В начале главная страница(Проверка на router)
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+#### Возможности
+- Добавление таски
+- Удаление таски
+- Редактирование такски
 
-### Compiles and minifies for production
-```
-npm run build
-```
+#### Как проверить?
+- Скачать репозиторий
+- Открыть терминал в скаченной директории
+- Написать ```npm i``` и дождаться скачивание всех модулей
+- Если Вы хотите использовать не на сервере, то в файле vue.config.js добавьте строчку ```publicPath: './'``` под строкой ```transpileDependencies: true```
+- Открыть терминал в скаченной директории
+- Написать ```npm run build``` и дождаться сборку проекта
+- Открыть папку dist и запустить файл index.html
 
-### Lints and fixes files
-```
-npm run lint
-```
+❗ Возможно нарушение зависимостей npm пакетов
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
