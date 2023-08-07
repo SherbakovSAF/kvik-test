@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import createNewTasks from '@/components/createNewTasks.vue';
-import tasksList from '@/components/tasksList.vue';
+import createNewTasks from '@/components/CreateNewTasks.vue';
+import tasksList from '@/components/TasksList.vue';
 
 export default {
      name: 'TaskPage',

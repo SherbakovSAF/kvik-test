@@ -20,6 +20,7 @@ export default {
                     alert('Введите значение, ведь пусто')
                } else {
                     this.$store.commit('addNewTask', this.taskValue)
+                    // this.$emit('newTask', )
                     this.taskValue = ''
                }
           }

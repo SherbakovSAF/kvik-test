@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import IndexPage from '../pages/indexPage.vue'
+import IndexPage from '../pages/IndexPage.vue'
 
 const routes = [
   {
@@ -10,7 +10,7 @@ const routes = [
   {
     path: '/tasks',
     name: 'tasks',
-    component: () => import('../pages/taskPage.vue')
+    component: () => import('../pages/TaskPage.vue')
   }
 ]
 

@@ -1,5 +1,5 @@
 <template>
-     <div v-if="localTasksList.length" class="tasks__wrap">
+     <div v-show="localTasksList.length" class="tasks__wrap">
           <div  class="tasks__content__wrap">
                <article v-for="task in localTasksList" :key="task.id" class="task__card">
                     <div>

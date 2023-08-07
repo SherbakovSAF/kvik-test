@@ -36,7 +36,8 @@ export default createStore({
       state.tasks = state.tasks.filter(e => e.id != taskID)
     },
     initialiseStore(state){
-      state.tasks = [...JSON.parse(localStorage.getItem('localTasksList'))]
+      let localStorageTasks = JSON.parse(localStorage.getItem('localTasksList'))
+      if(localStorageTasks != null) state.tasks = localStorageTasks
     }
   },
 });
